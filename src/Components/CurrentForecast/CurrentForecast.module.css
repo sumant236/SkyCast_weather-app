@@ -1,0 +1,166 @@
+
+/* Base alignment for text elements */
+.locationGroup,
+.weatherCards {
+  text-align: left;
+}
+
+/* Main hero card featuring the custom SVG background */
+.tempCard {
+  background: url("../../assets/images/bg-today-large.svg") center/cover
+    no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  padding: 1.5rem 4rem;
+}
+
+.tempDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.weatherIcon {
+  width: 30%;
+}
+
+.currentTemp {
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.location {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.currentDate {
+  color: #b3b5ff;
+}
+
+/* Secondary weather details grid (Feels like, Humidity, etc.) */
+.weatherCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 2rem;
+  gap: 2%;
+}
+
+.card {
+  background: #25253f;
+  border-radius: 0.75rem;
+  padding: 0rem 1.5rem;
+  border: 1px solid #38375b;
+}
+
+.cardTitle {
+  color: #c8c7da;
+}
+
+.cardValue {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+/* Tablet/Desktop scale-down adjustments */
+@media (max-width: 1400px) {
+  .card {
+    padding: 0 1rem;
+  }
+
+  .cardValue {
+    font-size: 22px;
+  }
+
+  .weatherIcon {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .currentTemp {
+    font-size: 72px;
+  }
+}
+
+/* Switch to 2-column grid for details and reduce hero text size */
+@media (max-width: 1000px) {
+  .tempCard {
+    padding: 1.5rem;
+  }
+
+  .location {
+    font-size: 24px;
+  }
+
+  .currentTemp {
+    font-size: 56px;
+  }
+
+  .weatherCards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+  }
+
+  .cardValue {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 890px) {
+  .location {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .currentDate {
+    font-size: 14px;
+    margin-top: 0.25rem;
+  }
+
+  .currentTemp {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 760px) {
+  .tempCard {
+    padding: 1rem;
+  }
+
+  .weatherIcon {
+    width: 35%;
+  }
+
+  .currentTemp {
+    font-size: 40px;
+  }
+}
+
+/* Small mobile: Switch to vertical layout and small background variation */
+@media (max-width: 560px) {
+  .tempCard {
+    background: url("../../assets/images/bg-today-small.svg") center/cover
+      no-repeat;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tempDisplay {
+    justify-content: space-around;
+  }
+
+  .currentTemp {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 380px) {
+  .currentTemp {
+    margin: 1rem;
+    font-size: 60px;
+  }
+}

@@ -1,0 +1,60 @@
+.heading {
+  text-align: left;
+  font-weight: 500;
+}
+
+.minMaxDisplay {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dailyCards {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1%;
+}
+
+.card {
+  background: #25253f;
+  /* width: 10%; */
+  border: 1px solid #38375b;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.weatherIcon {
+  width: 100%;
+}
+
+.cardTitle {
+  margin: 0;
+}
+
+.maxTemp,
+.minTemp {
+  margin: 0.5rem 0 0;
+  font-size: 14px;
+}
+
+@media (max-width: 1300px) {
+  .card {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .dailyCards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .dailyCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

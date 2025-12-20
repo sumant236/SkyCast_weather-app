@@ -1,0 +1,19 @@
+.forecastContainer {
+  display: grid;
+  grid-template-columns: 55% 40%;
+  gap: 5%;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .forecastContainer {
+    gap: 3%;
+    grid-template-columns: 57% 40%;
+  }
+}
+
+@media (max-width: 760px) {
+  .forecastContainer {
+    grid-template-columns: 1fr;
+  }
+}
