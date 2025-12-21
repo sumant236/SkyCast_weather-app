@@ -60,20 +60,23 @@ npm start
 
 1. **Homepage & Local Weather:**
    Upon arrival, allow location access to see your local sky conditions instantly.
-   ![SkyCast-LandingPage]()
+   ![Landing Page](https://github.com/user-attachments/assets/7c788dbd-7fe8-4805-b216-92cc3b897a39)
+
 
 2. **Searching for a Location:**
    Use the search bar at the top to type a city name. Select the correct location from the dropdown results.
-   ![SkyCast-Search](Insert-Image-Link-Here)
+   ![Search Page](https://github.com/user-attachments/assets/486ed487-ff23-46ee-be10-2b2ea2fac194)
+
 
 3. **Hourly Breakdown:**
    Check the hourly forecast on the right. Notice how it automatically centers on the current time for "Today."
-   ![SkyCast-Hourly](Insert-Image-Link-Here)
+   ![Hourly Forecast](https://github.com/user-attachments/assets/1ad84499-eb95-4ae7-8ee3-f36b275ec1d4)
 
 4. **Changing Units:**
    Click the "Units" button in the Navbar to switch between Metric and Imperial systems globally.
-   ![SkyCast-Units](Insert-Image-Link-Here)
+   ![Changing Units](https://github.com/user-attachments/assets/697a82bb-6657-4aa3-baaf-5a37a3c712bd)
+
 
 5. **Daily Planning:**
    View the 7-day forecast at the bottom to see temperature trends and weather icons for the week ahead.
-   ![SkyCast-Daily](Insert-Image-Link-Here)
+   ![Daily Forecast](https://github.com/user-attachments/assets/3f1598a7-858c-4ddf-a53b-79a8e2e3c84f)
