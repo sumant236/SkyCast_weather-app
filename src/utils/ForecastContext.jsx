@@ -10,16 +10,19 @@ export const ForecastContext = createContext({
   longitude: [],
   latitude: [],
   selectedUnits: {},
+  error: "",
   handleUnitChange: () => {},
   getForecast: () => {},
+  getGeoLocation: () => {},
 });
 
 export const ForecastProvider = ({ children }) => {
   const [currentForecast, setCurrentForecast] = useState(null);
   const [dailyForecast, setDailyForecast] = useState([]);
-  const [hourlyForecast, setHourlyForecast] = useState({});
+  const [hourlyForecast, setHourlyForecast] = useState(null);
   const [longitude, setLogitude] = useState(null);
   const [latitude, setLatitude] = useState(null);
+  const [error, setError] = useState(null);
 
   // State for user-selectable units; changes here trigger a re-fetch of the API
   const [selectedUnits, setSelectedUnits] = useState({
@@ -108,7 +111,6 @@ export const ForecastProvider = ({ children }) => {
   // Group hourly data by day names
   const addHourlyForecast = (data) => {
     const hourlyData = data.hourly;
-    console.log(data);
     const newHourlyForecast = { currentDay: days[new Date().getDay()] };
 
     for (let i = 0; i < hourlyData.time.length; i++) {
@@ -140,6 +142,9 @@ export const ForecastProvider = ({ children }) => {
 
   // Fetch weather data from Open-Meteo
   const getForecast = (latitude, longitude) => {
+    // Prevent calling API if we don't have coords
+    if (!latitude || !longitude) return;
+
     setLatitude(latitude);
     setLogitude(longitude);
 
@@ -148,12 +153,13 @@ export const ForecastProvider = ({ children }) => {
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,weather_code&current=wind_speed_10m,relative_humidity_2m,apparent_temperature,precipitation&timezone=auto&wind_speed_unit=${selectedUnits.windSpeed}&temperature_unit=${selectedUnits.temperature}&precipitation_unit=${selectedUnits.precipitation}`
     )
       .then((res) => {
+        setError(null);
         addCurrentForecast(res.data);
         addDailyForecast(res.data);
         addHourlyForecast(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        setError("Failed to fetch weather data. Please try again later.");
       });
   };
 
@@ -172,9 +178,13 @@ export const ForecastProvider = ({ children }) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+          setError(null);
           getForecast(latitude, longitude);
         },
         (error) => {
+          setError(
+            "Location access denied. Please enable location to see your weather."
+          );
           console.error("Error getting user location:", error);
         }
       );
@@ -206,8 +216,10 @@ export const ForecastProvider = ({ children }) => {
         dailyForecast,
         hourlyForecast,
         selectedUnits,
+        error,
         getForecast,
         handleUnitChange,
+        getGeoLocation,
       }}
     >
       {children}

@@ -59,17 +59,23 @@ const SearchBar = () => {
             </div>
           ) : (
             geoLocations.map((location) => {
+              console.log(location);
               let locationValues = [];
               // Extract City, State, and Country names
               for (let key in location) {
                 if (
-                  key.startsWith("admin") &&
-                  key.length > 5 &&
+                  (key === "admin1" || key === "admin2") &&
                   !key.endsWith("_id")
                 ) {
                   locationValues.unshift(location[key]);
                 }
               }
+
+              // Add the country at the end
+              if (location.country) {
+                locationValues.push(location.country);
+              }
+
               const locationName = locationValues.join(", ");
               return (
                 <div

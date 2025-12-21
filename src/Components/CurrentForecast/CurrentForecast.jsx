@@ -26,7 +26,6 @@ const CurrentForecast = () => {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&location_type=ROOFTOP&result_type=street_address&key=${process.env.REACT_APP_GEOCODING_API}`
       )
         .then((res) => {
-          console.log(res.data);
           const components = res.data?.results?.[0]?.address_components || [];
           let locality = null;
           let state = null;

@@ -6,6 +6,12 @@
   margin-top: 2rem;
 }
 
+.loadingIcon {
+  width: 13%;
+  position: relative;
+  top: 8rem;
+}
+
 /* Adjust column balance for medium screens */
 @media (max-width: 1200px) {
   .forecastContainer {

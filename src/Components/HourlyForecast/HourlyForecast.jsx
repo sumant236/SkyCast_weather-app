@@ -68,7 +68,6 @@ const HourlyForecast = () => {
       })
       .toUpperCase();
 
-    console.log(formattedTime);
     setCurretTime(formattedTime);
     setCurrentDayName(options[date.getDay()].value);
     setSelectedDay(hourlyForecast.currentDay);
@@ -98,7 +97,7 @@ const HourlyForecast = () => {
     }
   }, [selectedDay, currentDayName]);
 
-  return hourlyForecast && selectedDay ? (
+  return hourlyForecast && selectedDay && (
     <div className={styles.hourlyForecast}>
       <div className={styles.selectingOptions}>
         <p className={styles.title}>Hourly Forecast</p>
@@ -145,9 +144,7 @@ const HourlyForecast = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <div>Loading....</div>
-  );
+  )
 };
 
 export default HourlyForecast;

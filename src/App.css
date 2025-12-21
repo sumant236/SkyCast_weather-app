@@ -5,6 +5,7 @@
   color: #fff;
   font-family: "Bricolage Grotesque", sans-serif;
   padding: 3rem 6rem;
+  min-height: 90vh;
 }
 
 .heading {

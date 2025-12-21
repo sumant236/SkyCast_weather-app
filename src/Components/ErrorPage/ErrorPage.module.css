@@ -1,0 +1,52 @@
+/* Center error content vertically */
+.errorContainer {
+  position: relative;
+  top: 7rem;
+}
+
+.errorLogo {
+  width: 15%;
+}
+
+.errorTitle {
+  font-size: 40px;
+  margin-bottom: 1rem;
+}
+
+.errorDesc {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+/* Retry action button styling */
+.retryButton {
+  display: flex;
+  align-items: center;
+  background: #25253f;
+  color: #fff;
+  justify-content: space-around;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 80px;
+  margin: auto;
+}
+
+/* Tablet adjustments */
+@media (max-width: 760px) {
+  .errorDesc {
+    width: 70%;
+  }
+}
+
+/* Mobile adjustments for text and spacing */
+@media (max-width: 560px) {
+  .errorTitle {
+    font-size: 26px;
+  }
+
+  .errorDesc {
+    width: 90%;
+  }
+}

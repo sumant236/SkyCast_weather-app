@@ -6,7 +6,7 @@ SkyCast is a modern, responsive weather dashboard that provides real-time meteor
 SkyCast goes beyond basic weather reporting. It features a dynamic "Hourly Forecast" with smart auto-scrolling to the current hour, a global unit conversion system for temperature, wind, and precipitation, and a robust search engine to find weather data for any city worldwide. Whether you're checking for rain or planning your week, SkyCast delivers data with clarity and speed.
 
 ## Deployed App
-[Insert Your Live Link Here]
+[https://skycast-weatherapplication.netlify.app](https://skycast-weatherapplication.netlify.app)
 
 ## Features
 
@@ -29,8 +29,13 @@ Displays "Feels Like" temperature, humidity levels, wind speeds, and precipitati
 ### 6. Responsive Design
 Fully optimized for Desktop, Tablet, and Mobile views with custom CSS Grid and Flexbox layouts.
 
+### 7. Graceful Error Handling
+* Built-in error boundaries for **Location Denials** and **API Failures**.
+* Custom **Error Page** with a "Retry" mechanism that allows users to re-sync their data without refreshing the page.
+
+
 ## Technology Stack
-React.js · Context API · Axios · Open-Meteo API · Google Geocoding API · CSS Modules
+React.js · Context API · Axios · Open-Meteo API · Google Geocoding API · CSS Modules · 
 
 ---
 
@@ -39,7 +44,7 @@ Detailed instructions on how to install, configure, and get the project running.
 
 ```bash
 # Clone the repository
-git clone '[https://github.com/YOUR_USERNAME/SkyCast.git](https://github.com/YOUR_USERNAME/SkyCast.git)'
+git clone https://github.com/sumant236/SkyCast_weather-app.git
 
 # Navigate into the project directory
 cd SkyCast
@@ -55,7 +60,7 @@ npm start
 
 1. **Homepage & Local Weather:**
    Upon arrival, allow location access to see your local sky conditions instantly.
-   ![SkyCast-LandingPage](Insert-Image-Link-Here)
+   ![SkyCast-LandingPage]()
 
 2. **Searching for a Location:**
    Use the search bar at the top to type a city name. Select the correct location from the dropdown results.
