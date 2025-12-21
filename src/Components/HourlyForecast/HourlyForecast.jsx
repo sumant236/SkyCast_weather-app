@@ -72,6 +72,8 @@ const HourlyForecast = () => {
     setCurretTime(formattedTime);
     setCurrentDayName(options[date.getDay()].value);
     setSelectedDay(hourlyForecast.currentDay);
+
+    // eslint-disable-next-line
   }, [hourlyForecast]);
 
   // Auto-scroll to the current hour when viewing today

@@ -186,11 +186,15 @@ export const ForecastProvider = ({ children }) => {
   // Get location on initial mount
   useEffect(() => {
     getGeoLocation();
+
+    // eslint-disable-next-line
   }, []);
 
   // Re-fetch weather when units change
   useEffect(() => {
     getForecast(latitude, longitude);
+
+    // eslint-disable-next-line
   }, [selectedUnits]);
 
   return (

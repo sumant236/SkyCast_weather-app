@@ -56,6 +56,7 @@ const CurrentForecast = () => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line
   }, [longitude, latitude, currentForecast]);
 
   return (
