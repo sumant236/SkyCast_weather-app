@@ -1,7 +1,7 @@
 import axios from "axios";
 import searchIcon from "../../assets/images/icon-search.svg";
 import styles from "./SearchBar.module.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ReactComponent as LoadingIcon } from "../../assets/images/icon-loading.svg";
 import { ForecastContext } from "../../utils/ForecastContext";
 
@@ -9,14 +9,13 @@ const SearchBar = () => {
   const [geoLocations, setGeoLocations] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const { getForecast } = useContext(ForecastContext);
 
   // Search for locations using Open-Meteo Geocoding API
-  function handleSearch(e) {
+  function handleSearch() {
     setLoading(true);
-    axios(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${e.target.value}`
-    )
+    axios(`https://geocoding-api.open-meteo.com/v1/search?name=${searchValue}`)
       .then((res) => {
         setGeoLocations(res.data.results);
         setIsOpen(true);
@@ -32,6 +31,15 @@ const SearchBar = () => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    handleSearch();
+    if (searchValue === "") {
+      setIsOpen(false);
+    }
+
+    // eslint-disable-next-line
+  }, [searchValue]);
+
   return (
     <div className={styles.searchBar}>
       <div className={styles.searchContainer}>
@@ -44,10 +52,12 @@ const SearchBar = () => {
           <input
             placeholder="Search for a place..."
             className={styles.searchInput}
-            onChange={handleSearch}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
-        <button className={styles.searchButton}>Search</button>
+        <button className={styles.searchButton} onClick={handleSearch}>
+          Search
+        </button>
       </div>
 
       {/* Show search result dropdown */}
