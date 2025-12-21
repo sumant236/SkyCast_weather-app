@@ -7,25 +7,23 @@ import { ForecastContext } from "./utils/ForecastContext";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 function App() {
-  const {error} = useContext(ForecastContext);
+  const { error } = useContext(ForecastContext);
 
   return (
     <div className="App">
       {/* Top navigation and settings */}
       <Navbar />
 
+      <h1 className="heading">How's the sky looking today?</h1>
+
+      {/* Location search input */}
+      <SearchBar />
+
       {error ? (
         <ErrorPage />
       ) : (
-        <>
-          <h1 className="heading">How's the sky looking today?</h1>
-
-          {/* Location search input */}
-          <SearchBar />
-
-          {/* Main weather dashboard container */}
-          <Forecast />
-        </>
+        /* Main weather dashboard container */
+        <Forecast />
       )}
     </div>
   );

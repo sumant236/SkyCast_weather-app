@@ -108,6 +108,12 @@
   text-align: center;
 }
 
+.errorMessage {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
 @media (max-width: 1200px) {
   .searchBar {
     width: 40%;

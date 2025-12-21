@@ -5,14 +5,15 @@ import { useContext } from "react";
 import { ForecastContext } from "../../utils/ForecastContext";
 
 const ErrorPage = () => {
-  const { getGeoLocation } = useContext(ForecastContext);
+  const { getGeoLocation, error } = useContext(ForecastContext);
   return (
     <div className={styles.errorContainer}>
       <img src={errorLogo} alt="error-logo" className={styles.errorLogo} />
       <h1 className={styles.errorTitle}>Something went wrong</h1>
       <p className={styles.errorDesc}>
-        We couldn't connect to the server (API error). Please try again in a few
-        moments.
+        {/* We couldn't connect to the server (API error). Please try again in a few
+        moments. */}
+        {error}
       </p>
       {/* Button to manually re-trigger the data fetch process */}
       <button onClick={() => getGeoLocation()} className={styles.retryButton}>

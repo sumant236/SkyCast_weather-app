@@ -143,7 +143,12 @@ export const ForecastProvider = ({ children }) => {
   // Fetch weather data from Open-Meteo
   const getForecast = (latitude, longitude) => {
     // Prevent calling API if we don't have coords
-    if (!latitude || !longitude) return;
+    if (!latitude || !longitude) {
+      setError(
+        "We couldn't determine your location. Please ensure your device's Location Services are turned on and that you've granted browser permission. Alternatively, you can search for a city manually above."
+      );
+      return;
+    }
 
     setLatitude(latitude);
     setLogitude(longitude);
@@ -165,7 +170,6 @@ export const ForecastProvider = ({ children }) => {
 
   // Update global unit settings
   const handleUnitChange = (category, newValue) => {
-    console.log(newValue);
     setSelectedUnits((prevUnits) => ({
       ...prevUnits,
       [category]: newValue,
@@ -183,13 +187,18 @@ export const ForecastProvider = ({ children }) => {
         },
         (error) => {
           setError(
-            "Location access denied. Please enable location to see your weather."
+            "We couldn't determine your location. Please ensure your device's Location Services are turned on and that you've granted browser permission. Alternatively, you can search for a city manually above."
           );
           console.error("Error getting user location:", error);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000, // Wait for 5 seconds, then trigger the error callback
+          maximumAge: 0,
         }
       );
     } else {
-      console.error("Geolocation is not supported by this browser.");
+      setError("Geolocation is not supported by this browser.");
     }
   };
 
