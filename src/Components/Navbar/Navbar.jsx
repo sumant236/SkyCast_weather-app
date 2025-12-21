@@ -7,10 +7,13 @@ import CustomSelector from "../CustomUnitSelector/CustomSelector";
 import { ForecastContext } from "../../utils/ForecastContext";
 
 const Navbar = () => {
+  // Toggle the units settings panel
   const [isOpen, setIsOpen] = useState(false);
 
+  // Access unit state and change handler from context
   const { handleUnitChange, selectedUnits } = useContext(ForecastContext);
 
+  // Configuration for unit types and labels
   const unitData = [
     {
       label: "Temperature",
@@ -42,6 +45,7 @@ const Navbar = () => {
     <div className={styles.header}>
       <img src={logo} alt="logo" className={styles.logo} />
       <div className={styles.customDropdownContainer}>
+        {/* Toggle units panel on click */}
         <button
           className={styles.unitsToggleButton}
           onClick={() => setIsOpen(!isOpen)}
@@ -55,6 +59,7 @@ const Navbar = () => {
           </span>
         </button>
 
+        {/* Display unit selectors when panel is open */}
         {isOpen && (
           <div className={styles.unitsPanel}>
             {unitData.map((group) => (

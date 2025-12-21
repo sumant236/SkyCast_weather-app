@@ -3,6 +3,7 @@
   justify-content: space-between;
 }
 
+/* Button to open unit settings */
 .unitsToggleButton {
   display: flex;
   width: 100px;
@@ -16,10 +17,12 @@
   cursor: pointer;
 }
 
+/* Anchor for the dropdown panel */
 .customDropdownContainer {
   position: relative;
 }
 
+/* Floating settings panel */
 .unitsPanel {
   position: absolute;
   background-color: #25253f;
@@ -30,6 +33,7 @@
   z-index: 2;
 }
 
+/* Mobile logo scaling */
 @media (max-width: 460px) {
   .logo {
     width: 50%;

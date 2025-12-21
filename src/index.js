@@ -7,6 +7,7 @@ import { ForecastProvider } from "./utils/ForecastContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    {/* Wrap App in Provider to share weather data globally */}
     <ForecastProvider>
       <App />
     </ForecastProvider>

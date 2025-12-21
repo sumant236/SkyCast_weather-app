@@ -20,6 +20,8 @@ export const ForecastProvider = ({ children }) => {
   const [hourlyForecast, setHourlyForecast] = useState({});
   const [longitude, setLogitude] = useState(null);
   const [latitude, setLatitude] = useState(null);
+
+  // State for user-selectable units; changes here trigger a re-fetch of the API
   const [selectedUnits, setSelectedUnits] = useState({
     temperature: "celsius",
     windSpeed: "kmh",
@@ -36,6 +38,7 @@ export const ForecastProvider = ({ children }) => {
     "Saturday",
   ];
 
+  // Format and store current hour weather
   const addCurrentForecast = (data) => {
     const date = new Date();
 
@@ -44,6 +47,7 @@ export const ForecastProvider = ({ children }) => {
     const day = date.getDate();
     const hours = date.getHours();
 
+    // Rounding time to the nearest hour to match the API's hourly dataset
     const currentTimeString =
       date.getMinutes() > 30
         ? `${year}-${month}-${day}T${hours + 1}:00`
@@ -51,6 +55,7 @@ export const ForecastProvider = ({ children }) => {
 
     const indexOfCurrentTime = data.hourly.time.indexOf(currentTimeString);
 
+    // Combine raw values with unit strings (e.g., "20" + "°C") for UI display
     const temperature = Math.round(
       data.hourly.temperature_2m[indexOfCurrentTime]
     );
@@ -80,6 +85,8 @@ export const ForecastProvider = ({ children }) => {
   const addDailyForecast = (data) => {
     const daily = data.daily;
     const newForecasts = [];
+
+    // Format and store 7-day forecast
     for (let i = 0; i < 7; i++) {
       const date = new Date(daily.time[i]);
       const day = days[date.getDay()];
@@ -98,6 +105,7 @@ export const ForecastProvider = ({ children }) => {
     setDailyForecast(newForecasts);
   };
 
+  // Group hourly data by day names
   const addHourlyForecast = (data) => {
     const hourlyData = data.hourly;
     console.log(data);
@@ -130,10 +138,12 @@ export const ForecastProvider = ({ children }) => {
     setHourlyForecast(newHourlyForecast);
   };
 
+  // Fetch weather data from Open-Meteo
   const getForecast = (latitude, longitude) => {
     setLatitude(latitude);
     setLogitude(longitude);
 
+    // Fetching data with dynamic unit parameters based on user settings
     axios(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,weather_code&current=wind_speed_10m,relative_humidity_2m,apparent_temperature,precipitation&timezone=auto&wind_speed_unit=${selectedUnits.windSpeed}&temperature_unit=${selectedUnits.temperature}&precipitation_unit=${selectedUnits.precipitation}`
     )
@@ -147,6 +157,7 @@ export const ForecastProvider = ({ children }) => {
       });
   };
 
+  // Update global unit settings
   const handleUnitChange = (category, newValue) => {
     console.log(newValue);
     setSelectedUnits((prevUnits) => ({
@@ -155,6 +166,7 @@ export const ForecastProvider = ({ children }) => {
     }));
   };
 
+  // Fetch user location via browser API
   const getGeoLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -171,10 +183,12 @@ export const ForecastProvider = ({ children }) => {
     }
   };
 
+  // Get location on initial mount
   useEffect(() => {
     getGeoLocation();
   }, []);
 
+  // Re-fetch weather when units change
   useEffect(() => {
     getForecast(latitude, longitude);
   }, [selectedUnits]);

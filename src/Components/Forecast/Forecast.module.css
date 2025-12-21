@@ -1,3 +1,4 @@
+/* Main dashboard grid: splits layout into current/daily and hourly sections */
 .forecastContainer {
   display: grid;
   grid-template-columns: 55% 40%;
@@ -5,6 +6,7 @@
   margin-top: 2rem;
 }
 
+/* Adjust column balance for medium screens */
 @media (max-width: 1200px) {
   .forecastContainer {
     gap: 3%;
@@ -12,6 +14,7 @@
   }
 }
 
+/* Collapse into a single column for mobile */
 @media (max-width: 760px) {
   .forecastContainer {
     grid-template-columns: 1fr;

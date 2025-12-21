@@ -8,12 +8,14 @@
   justify-content: space-between;
 }
 
+/* 7-column grid for full week view */
 .dailyCards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1%;
 }
 
+/* Individual day card styling */
 .card {
   background: #25253f;
   /* width: 10%; */
@@ -36,12 +38,14 @@
   font-size: 14px;
 }
 
+/* Desktop sizing tweaks */
 @media (max-width: 1300px) {
   .card {
     padding: 0.5rem;
   }
 }
 
+/* Tablet: switch to 4 columns */
 @media (max-width: 1000px) {
   .dailyCards {
     grid-template-columns: repeat(4, 1fr);
@@ -53,6 +57,7 @@
   }
 }
 
+/* Mobile: switch to 3 columns */
 @media (max-width: 560px) {
   .dailyCards {
     grid-template-columns: repeat(3, 1fr);

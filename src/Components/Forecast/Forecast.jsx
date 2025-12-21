@@ -5,7 +5,10 @@ import HourlyForecast from "../HourlyForecast/HourlyForecast";
 
 const Forecast = () => {
   return (
-    <div className={styles.forecastContainer}>
+    /* Main dashboard layout: Groups Current/Daily forecasts on the left and Hourly on the right */
+     <div
+      className={styles.forecastContainer}
+    >
       <div className={styles.dailyAndCurrent}>
         <CurrentForecast />
         <DailyForecast />

@@ -11,6 +11,7 @@ const SearchBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { getForecast } = useContext(ForecastContext);
 
+  // Search for locations using Open-Meteo Geocoding API
   function handleSearch(e) {
     setLoading(true);
     axios(
@@ -25,6 +26,7 @@ const SearchBar = () => {
       });
   }
 
+  // Update weather for the selected search result
   const handleClick = (location) => {
     getForecast(location.latitude, location.longitude);
     setIsOpen(false);
@@ -47,6 +49,8 @@ const SearchBar = () => {
         </div>
         <button className={styles.searchButton}>Search</button>
       </div>
+
+      {/* Show search result dropdown */}
       {geoLocations && isOpen && (
         <div className={styles.searchResults}>
           {loading ? (
@@ -56,6 +60,7 @@ const SearchBar = () => {
           ) : (
             geoLocations.map((location) => {
               let locationValues = [];
+              // Extract City, State, and Country names
               for (let key in location) {
                 if (
                   key.startsWith("admin") &&

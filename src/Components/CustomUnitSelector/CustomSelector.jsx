@@ -8,17 +8,18 @@ const CustomSelector = ({
   selectedValue,
   handleChange,
 }) => {
-  console.log(selectedValue);
   return (
-    <div className={styles.unitGroup}>
+    <div className={styles.customGroup}>
+      {/* Optional label for unit categories */}
       {label && <h4 className={styles.groupLabel}>{label}</h4>}
       {options.map((option) => (
         <label
           key={option.value}
+          // Apply active styling if the option is currently selected
           className={
             selectedValue === option.value
-              ? styles.checkedUnitOption
-              : styles.uncheckedUnitOption
+              ? styles.checkedOption
+              : styles.uncheckedOption
           }
         >
           <input
@@ -26,8 +27,9 @@ const CustomSelector = ({
             name={category}
             value={option.value}
             checked={selectedValue === option.value}
+            // Trigger parent change handler on click
             onChange={() => handleChange(category, option.value)}
-            className={styles.unitSelectorInput}
+            className={styles.selectorInput}
           />
           {option.label}
           {selectedValue === option.value && (
@@ -37,6 +39,7 @@ const CustomSelector = ({
           )}
         </label>
       ))}
+
       {category !== "percipitation" && <hr />}
     </div>
   );

@@ -1,3 +1,4 @@
+/* Core app container and background */
 .App {
   text-align: center;
   background-color: #02012b;
@@ -16,6 +17,7 @@
   }
 }
 
+/* Tablet and mobile scaling */
 @media (max-width: 760px) {
   .App {
     padding: 2rem 3rem 4rem;

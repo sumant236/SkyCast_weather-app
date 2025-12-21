@@ -10,8 +10,11 @@ const HourlyForecast = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentDayName, setCurrentDayName] = useState();
   const [currentTime, setCurretTime] = useState();
+
+  // Refs to manage internal scroll positioning
   const currentDayScrollRef = useRef();
   const scrollRef = useRef();
+
   const currentDay = new Date().getDay();
   const options = [
     {
@@ -44,15 +47,18 @@ const HourlyForecast = () => {
     },
   ];
 
+  // Rotate day list so the current day is first
   const reorderedOptions = [
     ...options.slice(currentDay),
     ...options.slice(0, currentDay),
   ];
 
+  // Handle day selection change
   const handleChange = (category, day) => {
     setSelectedDay(day);
   };
 
+  // Sync current time and initial selected day
   useEffect(() => {
     const date = new Date();
     const formattedTime = date
@@ -68,6 +74,7 @@ const HourlyForecast = () => {
     setSelectedDay(hourlyForecast.currentDay);
   }, [hourlyForecast]);
 
+  // Auto-scroll to the current hour when viewing today
   useEffect(() => {
     if (
       selectedDay === currentDayName &&
@@ -84,7 +91,7 @@ const HourlyForecast = () => {
       // Manually set the internal scroll position
       container.scrollTop = scrollPosition;
     } else if (scrollRef.current) {
-      // Reset to 12 AM for other days
+      // Reset scroll for other days
       scrollRef.current.scrollTop = 0;
     }
   }, [selectedDay, currentDayName]);
@@ -93,6 +100,8 @@ const HourlyForecast = () => {
     <div className={styles.hourlyForecast}>
       <div className={styles.selectingOptions}>
         <p className={styles.title}>Hourly Forecast</p>
+
+        {/* Toggle day selector dropdown */}
         <button onClick={() => setIsOpen(!isOpen)} className={styles.button}>
           {selectedDay}
           <Dropdown />
@@ -108,6 +117,7 @@ const HourlyForecast = () => {
         )}
       </div>
       <div className={styles.hourlyContent}>
+        {/* Scrollable hourly data container */}
         <div className={styles.hourlyWrapper} ref={scrollRef}>
           {hourlyForecast[selectedDay].map((data, index) => {
             const active =
@@ -117,6 +127,7 @@ const HourlyForecast = () => {
               <div
                 className={styles.hourlyCard}
                 key={index}
+                // Attach ref only to the card matching current time
                 ref={active ? currentDayScrollRef : null}
               >
                 <img

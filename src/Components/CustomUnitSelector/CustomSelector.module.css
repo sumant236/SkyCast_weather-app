@@ -1,4 +1,5 @@
-.unitGroup {
+/* Container for the selector dropdown/panel */
+.customGroup {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -7,7 +8,7 @@
   font-size: 14px;
 }
 
-.unitSelectorInput {
+.selectorInput {
   display: none;
 }
 
@@ -17,7 +18,8 @@
   font-weight: 300;
 }
 
-.checkedUnitOption {
+/* Base button styling for checked options */
+.checkedOption {
   background-color: #2f2f49;
   display: flex;
   justify-content: space-between;
@@ -25,9 +27,16 @@
   border-radius: 10px;
 }
 
-.uncheckedUnitOption,
-.checkedUnitOption {
+.uncheckedOption,
+.checkedOption {
   padding: 0.5em;
+  cursor: pointer;
+}
+
+.uncheckedOption:hover,
+.checkedOption:hover {
+  background: #3c3b5d;
+  border-radius: 10px;
 }
 
 hr {

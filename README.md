@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# SkyCast
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SkyCast is a modern, responsive weather dashboard that provides real-time meteorological data with a focus on user experience and precision. Built with **React** and powered by the **Open-Meteo** and **Google Geocoding APIs**, SkyCast offers detailed insights from current conditions to 7-day forecasts.
 
-## Available Scripts
+## Introduction
+SkyCast goes beyond basic weather reporting. It features a dynamic "Hourly Forecast" with smart auto-scrolling to the current hour, a global unit conversion system for temperature, wind, and precipitation, and a robust search engine to find weather data for any city worldwide. Whether you're checking for rain or planning your week, SkyCast delivers data with clarity and speed.
 
-In the project directory, you can run:
+## Deployed App
+[Insert Your Live Link Here]
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Geo-Location Sensing
+Automatically detects your current location on startup using the Browser Geolocation API to provide local weather instantly.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Global Search functionality
+Search for any city or region globally. Uses Open-Meteo Geocoding to provide accurate location suggestions including City, State, and Country.
 
-### `npm test`
+### 3. Smart Hourly Forecast
+Provides a detailed 24-hour breakdown for the next 7 days.
+* **Auto-Scroll Logic:** Automatically scrolls to and highlights the current hour's card, so you don't have to hunt for the present time.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Custom Unit Management
+Seamlessly toggle between **Celsius/Fahrenheit**, **km/h / mph**, and **mm/inches**. Global state management ensures all components update instantly when units are changed.
 
-### `npm run build`
+### 5. Detailed Weather Metrics
+Displays "Feels Like" temperature, humidity levels, wind speeds, and precipitation chances alongside high/low daily temperatures.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 6. Responsive Design
+Fully optimized for Desktop, Tablet, and Mobile views with custom CSS Grid and Flexbox layouts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technology Stack
+React.js · Context API · Axios · Open-Meteo API · Google Geocoding API · CSS Modules
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Installation & Getting Started
+Detailed instructions on how to install, configure, and get the project running.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# Clone the repository
+git clone '[https://github.com/YOUR_USERNAME/SkyCast.git](https://github.com/YOUR_USERNAME/SkyCast.git)'
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Navigate into the project directory
+cd SkyCast
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Install dependencies
+npm install 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Start the development server
+npm start
+```
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Homepage & Local Weather:**
+   Upon arrival, allow location access to see your local sky conditions instantly.
+   ![SkyCast-LandingPage](Insert-Image-Link-Here)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Searching for a Location:**
+   Use the search bar at the top to type a city name. Select the correct location from the dropdown results.
+   ![SkyCast-Search](Insert-Image-Link-Here)
 
-### Code Splitting
+3. **Hourly Breakdown:**
+   Check the hourly forecast on the right. Notice how it automatically centers on the current time for "Today."
+   ![SkyCast-Hourly](Insert-Image-Link-Here)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Changing Units:**
+   Click the "Units" button in the Navbar to switch between Metric and Imperial systems globally.
+   ![SkyCast-Units](Insert-Image-Link-Here)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. **Daily Planning:**
+   View the 7-day forecast at the bottom to see temperature trends and weather icons for the week ahead.
+   ![SkyCast-Daily](Insert-Image-Link-Here)

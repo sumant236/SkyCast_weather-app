@@ -1,3 +1,4 @@
+// Import weather icon assets
 import iconSunny from "../assets/images/icon-sunny.webp";
 import iconRainy from "../assets/images/icon-rain.webp";
 import iconOvercast from "../assets/images/icon-overcast.webp";
@@ -7,6 +8,7 @@ import iconPartlyCloudy from "../assets/images/icon-partly-cloudy.webp";
 import iconSnow from "../assets/images/icon-snow.webp";
 import iconStorm from "../assets/images/icon-storm.webp";
 
+// Map icon filenames to imported assets for dynamic lookup
 export const WeatherIconMap = {
   "icon-sunny.webp": iconSunny,
   "icon-partly-cloudy.webp": iconPartlyCloudy,

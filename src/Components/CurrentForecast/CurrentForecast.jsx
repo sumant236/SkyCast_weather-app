@@ -17,6 +17,8 @@ const CurrentForecast = () => {
     "Friday",
     "Saturday",
   ];
+
+  // Fetch city and state names from coordinates
   useEffect(() => {
     // Reverse Geocoding: Converts lat/lng into readable city and state names
     if (longitude && latitude) {
@@ -29,7 +31,7 @@ const CurrentForecast = () => {
           let locality = null;
           let state = null;
 
-          // Filter Google Maps address components for City (locality) and State (admin_level_1)
+          // Extract locality and state from Google API response
           for (let component of components) {
             if (component.types.includes("locality")) {
               locality = component.long_name;
@@ -41,7 +43,7 @@ const CurrentForecast = () => {
           }
           setLocation(locality + ", " + state);
 
-          // Generate a formatted date string: e.g., "Wednesday, Dec 17, 2025"
+          // Format current date for display
           const date = new Date();
           const year = date.getFullYear();
           const day = date.getDate();
@@ -54,13 +56,11 @@ const CurrentForecast = () => {
           console.log(err);
         });
     }
-
-    // Re-run if coordinates change or if new forecast data is fetched
   }, [longitude, latitude, currentForecast]);
 
   return (
     <div className={styles.currentForecast}>
-      {/* Conditionally render UI only after data is available */}
+      {/* Render weather data once available */}
       {currentForecast && (
         <div className={styles.currentForecastContainer}>
           {/* Main temperature and location card */}
@@ -81,7 +81,7 @@ const CurrentForecast = () => {
             </div>
           </div>
 
-          {/* Detailed weather stats cards (Feels Like, Humidity, etc.) */}
+          {/* Display weather detail cards */}
           <div className={styles.weatherCards}>
             <div className={styles.card}>
               <p className={styles.cardTitle}>Feels Like</p>
