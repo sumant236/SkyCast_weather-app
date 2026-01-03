@@ -46,18 +46,21 @@ export const ForecastProvider = ({ children }) => {
     const date = new Date();
 
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
+    // padStart(2, '0') ensures "1" becomes "01"
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    // Handling the hour rounding logic
+    let hoursValue = date.getHours();
+    if (date.getMinutes() > 30) {
+      hoursValue += 1;
+    }
+    const hours = String(hoursValue).padStart(2, "0");
 
     // Rounding time to the nearest hour to match the API's hourly dataset
-    const currentTimeString =
-      date.getMinutes() > 30
-        ? `${year}-${month}-${day}T${hours + 1}:00`
-        : `${year}-${month}-${day}T${hours}:00`;
+    const currentTimeString = `${year}-${month}-${day}T${hours}:00`;
 
     const indexOfCurrentTime = data.hourly.time.indexOf(currentTimeString);
-
     // Combine raw values with unit strings (e.g., "20" + "°C") for UI display
     const temperature = Math.round(
       data.hourly.temperature_2m[indexOfCurrentTime]
